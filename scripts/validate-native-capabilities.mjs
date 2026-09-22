@@ -13,6 +13,29 @@ const officialEvidence = JSON.parse(
   await readFile(new URL('native-capabilities-evidence.json', root), 'utf8'),
 );
 
+const geminiDeclaration = JSON.parse(
+  await readFile(new URL('gemini-native-search-declaration.json', root), 'utf8'),
+);
+assert.equal(geminiDeclaration.kind, 'maintainer-declaration');
+assert.equal(geminiDeclaration.web_search, true);
+assert.equal(geminiDeclaration.protocol, 'gemini');
+assert.equal(geminiDeclaration.tool, 'googleSearch');
+assert.ok(typeof geminiDeclaration.evidence === 'string' && geminiDeclaration.evidence.trim());
+assert.ok(typeof geminiDeclaration.verification === 'string' && geminiDeclaration.verification.trim());
+
+const declaredGeminiModels = new Map();
+for (const [provider, ids] of Object.entries(geminiDeclaration.models)) {
+  assert.ok(Array.isArray(ids), `${provider}: expected explicit Gemini model IDs`);
+  assert.equal(new Set(ids).size, ids.length, `${provider}: duplicate Gemini declarations`);
+  for (const id of ids) {
+    assert.ok(typeof id === 'string' && id.startsWith('gemini-'), `${provider}/${id}: invalid Gemini declaration`);
+    assert.equal(models[provider]?.filter((model) => model.id === id).length, 1, `${provider}/${id}: declaration must match exactly one catalog model`);
+    const documented = officialEvidence[provider]?.[id]?.web_search;
+    assert.ok(documented === undefined || documented === true, `${provider}/${id}: declaration contradicts documented evidence`);
+  }
+  declaredGeminiModels.set(provider, new Set(ids));
+}
+
 const clientSearchBySlug = new Map(
   codexClient.models
     .filter((model) => typeof model.supports_search_tool === 'boolean')
@@ -44,11 +67,12 @@ for (const [provider, entries] of Object.entries(models)) {
     }
 
     if (!provider.startsWith('codex-')) {
-      const expected = officialEvidence[provider]?.[model.id]?.web_search;
+      const expected = officialEvidence[provider]?.[model.id]?.web_search ??
+        (declaredGeminiModels.get(provider)?.has(model.id) ? true : undefined);
       assert.equal(
         capabilities?.web_search,
         expected,
-        `${provider}/${model.id}: must match exact documented model evidence or remain unknown`,
+        `${provider}/${model.id}: must match exact documented model evidence or maintainer declaration, or remain unknown`,
       );
       continue;
     }
