@@ -67,7 +67,7 @@ a false capability claim.
 ### Gemini maintainer declaration
 
 [`gemini-native-search-declaration.json`](./gemini-native-search-declaration.json)
-records the maintainer's explicit decision to mark all 61 existing Gemini
+records the maintainer's explicit decision to mark all 62 existing Gemini
 entries as `native_capabilities.web_search: true`, including image models and
 aliases:
 
@@ -77,7 +77,7 @@ aliases:
 | `vertex` | 16 |
 | `gemini-cli` | 7 |
 | `aistudio` | 16 |
-| `antigravity` | 8 |
+| `antigravity` | 9 |
 
 The declaration enumerates exact provider/model pairs. It is **not** official
 model-by-model documentation or a live upstream test result, and it does not
