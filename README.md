@@ -53,6 +53,8 @@ The exact assertions and provenance are recorded in
 | Catalog section | Exact model ID | Declaration | Evidence |
 | --- | --- | --- | --- |
 | `claude` | `claude-opus-5` | `true` | Anthropic's [Web search tool](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) documentation includes native search requests with this exact model, including `web_search_20250305`. |
+| `claude` | `claude-opus-5-5` | `true` | Maintainer declaration for Anthropic-native Claude; Antigravity-hosted Claude remains unsupported. |
+| `claude` | `claude-sonnet-5-5` | `true` | Maintainer declaration for Anthropic-native Claude; Antigravity-hosted Claude remains unsupported. |
 | `xai` | `grok-4.6` | `true` | The [Grok 4.6 model page](https://docs.x.ai/developers/grok-4-6.md) lists web search; the [official Responses examples](https://docs.x.ai/developers/tools/advanced-usage.md) use this exact ID with `web_search`. |
 | `xai` | `grok-4.7` | `true` | The [Grok 4.7 model page](https://docs.x.ai/developers/models/grok-4.7) lists web search; a live Responses probe verified `web_search`. |
 | `xai` | `grok-4.7-build-fast` | `true` | Live Responses probe through a local CPA xAI route returned `web_search_call` items and `url_citation` annotations. |

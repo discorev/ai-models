@@ -284,6 +284,9 @@
     },
     {
       "id": "claude-opus-5-5",
+      "native_capabilities": {
+        "web_search": true
+      },
       "object": "model",
       "created": 1790035200,
       "owned_by": "anthropic",
@@ -313,6 +316,9 @@
     },
     {
       "id": "claude-sonnet-5-5",
+      "native_capabilities": {
+        "web_search": true
+      },
       "object": "model",
       "created": 1790553600,
       "owned_by": "anthropic",
