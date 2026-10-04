@@ -21,6 +21,12 @@
       "request_example_source": "https://docs.x.ai/developers/tools/web-search",
       "evidence": "The official Grok 4.7 model page and tools documentation list web search support; live probe verified tools [{type: web_search}] via the Responses API.",
       "retrieval": "Official documentation and live backend invocation"
+    },
+    "grok-4.7-build-fast": {
+      "web_search": true,
+      "source": "https://docs.x.ai/developers/tools/web-search",
+      "evidence": "Live probe sent model grok-4.7-build-fast with tools [{type: web_search}] through the Responses API; repeated runs returned web_search_call items, server-side tool usage and url_citation annotations.",
+      "retrieval": "Live invocation through a local CPA xAI route on 2026-10-04"
     }
   }
 }
