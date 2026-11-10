@@ -289,7 +289,7 @@
       "owned_by": "anthropic",
       "type": "claude",
       "display_name": "Claude Fable 5.2",
-      "description": "Anthropic's newest Fable model, succeeding Claude Fable 5.1.",
+      "description": "Claude Fable 5.2 communicates more clearly than Claude Fable 5.1, generates output up to 30% faster and completes challenging tasks with fewer tokens. Built for the most ambitious, open-ended technical work.",
       "context_length": 1000000,
       "max_completion_tokens": 128000,
       "thinking": {
@@ -349,7 +349,7 @@
       "owned_by": "anthropic",
       "type": "claude",
       "display_name": "Claude Mythos 5.2",
-      "description": "Claude Mythos 5.2 is available only to accounts in Anthropic's trusted access program.",
+      "description": "Claude Mythos 5.2 is Anthropic's most capable model for cybersecurity engineering, the same underlying model as Claude Fable 5.2. It is available only to organizations approved for Mythos access.",
       "context_length": 1000000,
       "max_completion_tokens": 128000,
       "thinking": {
